@@ -1,0 +1,76 @@
+name: ForwardWidgets-actions
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4,16 * * *"
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    env:
+      TZ: "Asia/Shanghai"
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        repository: iTiaodahai/ForwardWidgets
+        path: ForwardWidgets-repo
+
+    - name: Run Bash Script
+      run: |
+        #!/bin/bash
+        mkdir -p ForwardWidgets-repo/ForwardWidgetsBuild
+        files=(
+            # huangxd插件(豆瓣想看、trakt想看、直播、雅图、追剧日历)
+            "Widgets.fwd https://raw.githubusercontent.com/huangxd-/ForwardWidgets/refs/heads/main/widgets.fwd"
+            # ti插件(vod、podcast)
+            "Ti.fwd https://raw.githubusercontent.com/bemarkt/scripts/refs/heads/master/provider/Forward/ti.fwd"
+            # ti插件(javrate、jable、javday）
+            "Porn.fwd https://raw.githubusercontent.com/bemarkt/scripts/refs/heads/master/provider/Forward/porn.fwd"
+            # 两块插件(热门精选、电视台、在线影院)
+            "Forward-Widgets.fwd https://raw.githubusercontent.com/2kuai/ForwardWidgets/refs/heads/main/forward-widgets.fwd"
+            # evan插件(TMDB人物影视作品)
+            "Person_Widgets.fwd https://github.com/EmrysChoo/ForwardWidgets/raw/refs/heads/main/person_Widgets.fwd"
+            # 第三方豆瓣、IMDB
+            "Pack1r.fwd https://raw.githubusercontent.com/pack1r/ForwardWidgets/refs/heads/main/pack1r.fwd"
+            # 海带插件(pornhub)
+            "Widgets.fwd https://raw.githubusercontent.com/Madai-v/ForwardWidgets/refs/heads/main/Widgets.fwd"
+            # 影视榜单、bangumi热门榜单、imdb分类资源、jable、91porn、pornhub
+            "OtherWidgets.fwd https://gist.githubusercontent.com/huangxd-/37aaa8cca9b888b2bed278e83d4432d9/raw/OtherWidgets.fwd"
+        )
+        for file in "${files[@]}"; do
+            set -- $file
+            echo "Downloading: $2"
+            curl -A "Surge iOS/3405" -f -L -o "ForwardWidgets-repo/ForwardWidgetsBuild/$1" "$2" || { echo "Download Failed: $2"; exit 1; }
+        done
+        echo "Files downloaded successfully."
+
+    - name: Copy files
+      run: |
+        rm -rf ForwardWidgets-repo/iOS
+        mkdir -p ForwardWidgets-repo/iOS
+        for file in ForwardWidgets-repo/ForwardWidgetsBuild/*.fwd; do
+          cp "$file" ForwardWidgets-repo/iOS/
+        done
+        echo "Files copied successfully."
+
+    - name: Push Update
+      run: |
+        cd ForwardWidgets-repo
+        if [[ -n $(git status -s) ]]; then
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
+          git add -A
+          git commit -m "Auto Update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
+          git push origin main
+        else
+          echo "No changes to commit."
+        fi
+
+    - name: Cleanup Workflow
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        retain_days: 0
+        keep_minimum_runs: 2
