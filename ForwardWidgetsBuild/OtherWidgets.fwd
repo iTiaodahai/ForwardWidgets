@@ -8,7 +8,7 @@
       "title": "影视榜单",
       "description": "聚合豆瓣、TMDB、IMDB和Bangumi的影视动画榜单",
       "requiredVersion": "0.0.1",
-      "version": "1.2.7",
+      "version": "1.2.9",
       "author": "阿米诺斯",
       "url": "https://gist.githubusercontent.com/huangxd-/37aaa8cca9b888b2bed278e83d4432d9/raw/ForwardWidgets.js"
     },
@@ -65,6 +65,15 @@
        "version": "0.9.4",
        "author": "匿名",
        "url": "https://github.com/baranwang/forward-widget/releases/latest/download/xvideos.js"
+    },
+    {
+       "id": "Tloml.wallpaper",
+       "title": "主页模块",
+       "description": "TVos 主页壁纸",
+       "requiredVersion": "0.0.1",
+       "version": "0.0.1",
+       "author": "G.M",
+       "url": "https://gist.githubusercontent.com/huangxd-/37aaa8cca9b888b2bed278e83d4432d9/raw/Forward.tv.os.topshelf.js"
     }
   ]
 }
