@@ -13,6 +13,15 @@
       "url": "https://gist.githubusercontent.com/huangxd-/37aaa8cca9b888b2bed278e83d4432d9/raw/ForwardWidgets.js"
     },
     {
+      "id": "ysbd",
+      "title": "影视榜单-butterfly",
+      "description": "聚合豆瓣、TMDB、IMDB和Bangumi的影视动画榜单",
+      "requiredVersion": "0.0.1",
+      "version": "1.3.0",
+      "author": "阿米诺斯",
+      "url": "https://raw.githubusercontent.com/quantumultxx/ForwardWidgets/refs/heads/main/Widgets/YSBD.js"
+    },
+    {
       "id": "bangumi_charts_tmdb_v3",
       "title": "Bangumi 热门榜单",
       "description": "获取Bangumi近期热门、每日放送数据，支持榜单筛选。",
@@ -74,6 +83,15 @@
        "version": "0.0.1",
        "author": "G.M",
        "url": "https://gist.githubusercontent.com/huangxd-/37aaa8cca9b888b2bed278e83d4432d9/raw/Forward.tv.os.topshelf.js"
+    },
+    {
+       "id": "Bitch",
+       "title": "碧池直播",
+       "description": "⚝五折码：TOM.5⚝",
+       "requiredVersion": "0.0.1",
+       "version": "1.0.0",
+       "author": "🅣🅞🅜",
+       "url": "https://gist.githubusercontent.com/huangxd-/37aaa8cca9b888b2bed278e83d4432d9/raw/bitch_live.js"
     }
   ]
 }
