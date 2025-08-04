@@ -27,8 +27,6 @@ jobs:
             "Widgets.fwd https://raw.githubusercontent.com/huangxd-/ForwardWidgets/refs/heads/main/widgets.fwd"
             # ti插件(vod、podcast)
             "Ti.fwd https://raw.githubusercontent.com/bemarkt/scripts/refs/heads/master/provider/Forward/ti.fwd"
-            # ti插件(javrate、jable、javday）
-            "Porn.fwd https://raw.githubusercontent.com/bemarkt/scripts/refs/heads/master/provider/Forward/porn.fwd"
             # 两块插件(热门精选、电视台)
             "Forward-Widgets.fwd https://raw.githubusercontent.com/2kuai/ForwardWidgets/refs/heads/main/forward-widgets-1.fwd"
             # evan插件(TMDB人物影视作品)
